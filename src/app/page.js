@@ -6,6 +6,7 @@ import Link from "next/link";
 import { categories } from '@/data/categories';
 import { useState } from 'react';
 import { useCurrency } from "@/contexts/currency-context";
+import { Suspense } from "react";
 
 // Get top 5 categories by course count
 const topCategories = [...categories]
@@ -51,7 +52,8 @@ export default function Home() {
   };
 
   return (
-    <div className="space-y-12">
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="space-y-12">
       {/* Hero Section */}
       <section className="text-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl text-white">
         <h1 className="text-4xl font-bold mb-6">Discover Your Next Skill</h1>
@@ -241,5 +243,6 @@ export default function Home() {
         </>
       )}
     </div>
+    </Suspense>
   );
 }
