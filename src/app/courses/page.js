@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import CourseCard from '@/components/courses/course-card';
 import CourseFilters from '@/components/courses/course-filters';
 import { courses } from '@/data/courses';
+import { Suspense } from 'react';
 
 export default function CoursesPage() {
   const searchParams = useSearchParams();
@@ -96,6 +97,7 @@ export default function CoursesPage() {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-1/4">
@@ -140,5 +142,6 @@ export default function CoursesPage() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
