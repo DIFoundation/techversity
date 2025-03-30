@@ -32,10 +32,10 @@ export default function InstructorDashboard() {
     return null;
   }
 
-  const totalStudents = teachingCourses.reduce((acc, course) => acc + (course.enrolledStudents?.length || 0), 0);
-  const totalEarnings = teachingCourses.reduce((acc, course) => acc + (course.price || 0), 0);
+  const totalRevenue = teachingCourses.reduce((acc, course) => acc + (course.price * course.enrolledStudents || 0), 0);
   const averageRating = teachingCourses.reduce((acc, course) => acc + (course.rating || 0), 0) / (teachingCourses.length || 1) || 0;
-  const completionRate = teachingCourses.reduce((acc, course) => acc + (course.enrolledStudents?.length || 0) / (course.students?.length || 0), 0) / (teachingCourses.length || 1) || 0;
+  const completeRate = teachingCourses.reduce((acc, course) => acc + (course.enrolledStudents?.length || 0) / (course.students?.length || 0), 0) / (teachingCourses.length || 1) || 0;
+  const enrolledStudents = teachingCourses.reduce((acc, course) => acc + (course.enrolledStudents || 0), 0);
 
   return (
     <DashboardLayout userRole="instructor">
@@ -54,21 +54,20 @@ export default function InstructorDashboard() {
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900">Total Students</h3>
-            <p className="mt-2 text-3xl font-bold text-blue-600">{totalStudents}</p>
+            <p className="mt-2 text-3xl font-bold text-blue-600">{enrolledStudents || 0}</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900">Total Earnings</h3>
-            <p className="mt-2 text-3xl font-bold text-green-600">{formatPrice(totalEarnings)}</p>
+            <p className="mt-2 text-3xl font-bold text-green-600">{formatPrice(totalRevenue)}</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900">Average Rating</h3>
             <p className="mt-2 text-3xl font-bold text-yellow-600">
-              {averageRating > 0 ? (averageRating).toFixed(1) : 0}
+              {averageRating > 0 ? (averageRating).toFixed(2) : 0}
             </p>
           </div>
         </div>
-
-
+        
         {/* Course Management */}
         <div className="bg-white rounded-lg shadow">
           <div className="p-6 flex justify-between items-center">
@@ -86,7 +85,7 @@ export default function InstructorDashboard() {
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-gray-900">{course.title}</h3>
                         <p className="mt-1 text-sm text-gray-500">
-                          {course.enrolledStudents?.length || 0} students enrolled
+                          {course.enrolledStudents || 0} students enrolled
                         </p>
                       </div>
                       <div className="flex items-center space-x-4">
@@ -102,13 +101,13 @@ export default function InstructorDashboard() {
                       <div className="border rounded-lg p-4">
                         <h4 className="text-sm font-medium text-gray-500">Revenue</h4>
                         <p className="mt-1 text-lg font-semibold text-gray-900">
-                          {formatPrice((course.price || 0) * (course.enrolledStudents?.length || 0))}
+                          {formatPrice(course.price * (course.enrolledStudents || 0))}
                         </p>
                       </div>
                       <div className="border rounded-lg p-4">
                         <h4 className="text-sm font-medium text-gray-500">Completion Rate</h4>
                         <p className="mt-1 text-lg font-semibold text-gray-900">
-                          {completionRate}%
+                          {completeRate > 0 ? (completeRate).toFixed(2) : 0}%
                         </p>
                       </div>
                       <div className="border rounded-lg p-4">

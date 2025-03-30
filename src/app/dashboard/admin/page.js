@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   const totalInstructors = users.filter(u => u.role === 'instructor').length;
   const totalAdmin = users.filter(u => u.role === 'admin').length
   const totalRevenue = courses.reduce((acc, course) => {
-    return acc + ((course.price || 0) * (course.enrolledStudents?.length || 0));
+    return acc + (course.price || 0) * (course.enrolledStudents || 0);
   }, 0);
 
   return (
