@@ -6,10 +6,8 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button";
 import CourseCurriculum from "@/components/courses/course-curriculum";
 import { courses } from "@/data/courses";
-import { users } from "@/data/users";
 import { useCurrency } from "@/contexts/currency-context";
 import { useParams } from "next/navigation";
-import { Suspense } from "react";
 
 // Get course data based on ID
 function getCourseData(id) {
@@ -73,7 +71,6 @@ export default function CourseDetail({ params }) {
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Course Content - Left Column */}
@@ -345,6 +342,5 @@ export default function CourseDetail({ params }) {
         </div>
       </div>
     </div>
-    </Suspense>
   );
 }
