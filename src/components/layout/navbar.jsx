@@ -53,7 +53,7 @@ const Navbar = () => {
           { href: '/courses', label: 'Courses' },
           { href: '/dashboard/student', label: 'My Learning' },
           { href: '/wishlist', label: 'Wishlist' },
-          { href: '/dashboard/student/certificates', label: 'Certificates' },
+          { href: '/dashboard/student/courses/certificates', label: 'Certificates' },
           { href: '/dashboard/student/profile', label: 'Profile' }
         ];
       case 'instructor':

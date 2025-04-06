@@ -16,7 +16,7 @@ function getCourseData(id) {
   return courses.find((course) => course.id === courseId);
 }
 
-export default function CourseDetail({ params }) {
+export default function CourseDetail() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [selectedSection, setSelectedSection] = useState("overview");
@@ -24,11 +24,11 @@ export default function CourseDetail({ params }) {
 
   const { formatPrice } = useCurrency();
 
-  const unwrappedParams = useParams();
+  const params = useParams();
 
   useEffect(() => {
     const foundCourse = courses.find(
-      (c) => c.id === parseInt(unwrappedParams.courseId)
+      (c) => c.id === parseInt(params.courseId)
     );
     setCourse(foundCourse);
 
@@ -36,29 +36,28 @@ export default function CourseDetail({ params }) {
     if (userData) {
       setUser(JSON.parse(userData));
     }
-  }, [unwrappedParams.courseId]);
+  }, [params.courseId]);
 
   const handleEnroll = () => {
     if (!user) {
       router.push(
         "/auth/login?redirect=" +
-          encodeURIComponent("/courses/" + unwrappedParams.courseId)
+          encodeURIComponent("/courses/" + params.courseId)
       );
       return;
     }
 
     const userCourse = user.enrolledCourses?.includes(course.id);
     if (userCourse) {
-      
-      router.push(`/dashboard/student?courseId=${course.id}`);
+      router.push(`/dashboard/student/courses/${course.id}/learn`);
       return;
     }
 
     if (course.price > 0) {
-      router.push(`/payment?courseId=${course.id}`);
+      router.push(`/payment/${course.id}`);
     } else {
       // Handle free course enrollment
-      router.push(`/dashboard/student?courseId=${course.id}`);
+      router.push(`/dashboard/student/courses/${course.id}/learn`);
     }
   };
 

@@ -7,6 +7,7 @@ import { courses } from '@/data/courses';
 import { useCurrency } from '@/contexts/currency-context';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function StudentDashboard() {
   const [user, setUser] = useState(null);
@@ -64,11 +65,11 @@ export default function StudentDashboard() {
   }, []);
 
   const handleContinueLearning = (courseId) => {
-    router.push(`/courses/${courseId}/learn`);
+    router.push(`/dashboard/student/courses/${courseId}/learn`);
   };
 
   const viewCertificate = (courseId) => {
-    router.push(`/dashboard/student/certificates/${courseId}`);
+    router.push(`/dashboard/student/courses/${courseId}/certificate`);
   };
 
   if (!user) {
@@ -160,7 +161,9 @@ export default function StudentDashboard() {
               <div className="p-6 text-center text-gray-500">
                 <p>You haven&apos;t enrolled in any courses yet.</p>
                 <button className="mt-4 px-4 py-2 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-700">
-                  Browse Courses
+                  <Link href="/courses">
+                    Browse Courses
+                  </Link>
                 </button>
               </div>
             )}
@@ -195,7 +198,7 @@ export default function StudentDashboard() {
                         onClick={() => viewCertificate(course.id)}
                         className="px-4 py-2 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-700"
                       >
-                        View Certificate
+                        Download Certificate
                       </button>
                     </div>
                   </div>
