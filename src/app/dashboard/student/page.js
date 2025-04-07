@@ -193,14 +193,14 @@ export default function StudentDashboard() {
                       <h3 className="text-lg font-semibold text-gray-900">{course.title}</h3>
                       <p className="mt-1 text-sm text-gray-500">{course.instructor}</p>
                     </div>
-                    <div className="flex-shrink-0">
+                    {/* <div className="flex-shrink-0">
                       <button
                         onClick={() => viewCertificate(course.id)}
                         className="px-4 py-2 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-700"
                       >
                         Download Certificate
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 ))}
               </div>

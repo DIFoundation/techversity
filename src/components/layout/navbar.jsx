@@ -54,14 +54,16 @@ const Navbar = () => {
           { href: '/dashboard/student', label: 'My Learning' },
           { href: '/dashboard/student/wishlist', label: 'Wishlist' },
           { href: '/dashboard/student/courses/certificates', label: 'Certificates' },
-          { href: '/dashboard/student/profile', label: 'Profile' }
+          { href: '/dashboard/student/profile', label: 'Profile' },
+          { href: '/contact-us', label: 'Contact Us' }
         ];
       case 'instructor':
         return [
           { href: '/dashboard/instructor', label: 'My Courses' },
           { href: '/dashboard/instructor/analytics', label: 'Analytics' },
           { href: '/dashboard/instructor/earnings', label: 'Earnings' },
-          { href: '/dashboard/instructor/profile', label: 'Profile' }
+          { href: '/dashboard/instructor/profile', label: 'Profile' },
+          { href: '/contact-us', label: 'Contact Us' }
         ];
       case 'admin':
         return [
@@ -69,7 +71,8 @@ const Navbar = () => {
           { href: '/dashboard/admin/users', label: 'Users' },
           { href: '/dashboard/admin/courses', label: 'Courses' },
           { href: '/dashboard/admin/analytics', label: 'Analytics' },
-          { href: '/dashboard/admin/profile', label: 'Profile' }
+          { href: '/dashboard/admin/profile', label: 'Profile' },
+          { href: '/contact-us', label: 'Contact Us' }
         ];
       default:
         return [
