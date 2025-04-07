@@ -59,7 +59,7 @@ export default function StudentDashboard() {
 
         {/* Completed Courses */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-bold text-gray-900">Completed Courses</h2>
+          <h2 className="text-xl font-bold text-gray-900">Certificates</h2>
           <div className="border-t border-gray-200">
             {completedCourses.length > 0 ? (
               <div className="divide-y divide-gray-200">

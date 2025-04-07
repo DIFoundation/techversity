@@ -147,6 +147,26 @@ export default function LoginPage() {
               Sign in
             </button>
           </div>
+
+          <div className="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <h3>Login Details</h3>
+            <span className="block sm:inline">
+              <p>
+                <span className='font-bold'>email: </span>student@techversity.com<br/>
+                <span className='font-bold'>password: </span>student1
+              </p>
+
+              <p>
+              <span className='font-bold'>email: </span>teacher@techversity.com<br/>
+              <span className='font-bold'>password: </span>teacher1
+              </p>
+
+              <p>
+              <span className='font-bold'>email: </span>admin@techversity.com<br/>
+              <span className='font-bold'>password: </span>admin1
+              </p>
+            </span>
+          </div>
         </form>
       </div>
     </div>
